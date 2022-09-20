@@ -52,10 +52,9 @@ iris_means<- iris%>%
 ## On Your Own #1 
 # now compute mean petal area for each species - how would you go about it using dplyr
 # Q: What is the mean petal area for each species
-iris_area_mean<- iris%>%
-  mutate(Petal.Area = Petal.Length * Petal.Width)%>%
+iris_area_mean<- iris_area%>%
   group_by(Species)%>%
-  summarize(mn.petal.area = mean(Petal.Area))
+  summarize(mn.petal.area = mean(petal.area))
 
 # 6. arrange/select/count
 # determine which species has the longest mean petal length
@@ -120,6 +119,8 @@ wt_ht <- left_join(wt, ht, by = "level")
 # must use combination of dplyr verbs
 # data.frames are airports, flights, planes and weather
 # HINT: faa column in airports links to origin column in flights
+#install.packages('nycflights13')
+library(nycflights13)
 nycflights<- flights
 airports<- airports
 # Q: Which airport (name) had the greatest number of arriving flights in 2013?
